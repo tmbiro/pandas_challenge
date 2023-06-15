@@ -18,12 +18,6 @@ As a first task, you've been asked to analyze the district-wide standardized tes
 4. Add your Jupyter notebook to this folder. This will be the main script to run for analysis.
 5. Push these changes to GitHub or GitLab.
 
-## Files
-
-Download the following files to help you get started:
-
-- [Module 4 Challenge files](https://example.com)
-
 ## Instructions
 
 Using Pandas and Jupyter Notebook, create a report that includes the following data. Your report must include a written description of at least two observable trends based on the data.
