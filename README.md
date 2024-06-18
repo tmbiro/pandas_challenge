@@ -347,6 +347,7 @@ spending_summary
 ```
 ![image](https://github.com/tmbiro/pandas_challenge/assets/26468137/d8be3687-6b0e-4e3d-96eb-61ef76524b88)
 
+We can see that students in schools with smaller spending ranges per student performed better on math and reading than students in schools with larger spending ranges.
 
 **Scores by School Size**
 
