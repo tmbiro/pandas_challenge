@@ -60,11 +60,11 @@ First, I performed some necessary calculations and then created a high-level sna
   ```
 
 - Total students: 39,170
-```python
-# Calculate the total number of students
-student_count = school_data_complete["student_name"].count()
-student_count
-```
+    ```python
+    # Calculate the total number of students
+    student_count = school_data_complete["student_name"].count()
+    student_count
+    ```
 
 - Total budget: 24,649,428
 ```python
