@@ -66,7 +66,7 @@ First, I performed some necessary calculations and then created a high-level sna
     student_count
     ```
 
-- <b>Total budget:</b> 24,649,428
+- <b>Total budget:</b> $24,649,428
     ```python
     # Calculate the total budget for the district
     total_budget = school_data["budget"].sum()
