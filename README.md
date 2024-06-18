@@ -52,83 +52,83 @@ Using Pandas and Jupyter Notebook, I needed to create a report that includes the
 
 First, I performed some necessary calculations and then created a high-level snapshot of the district's key metrics in tue DataFrame. I discoverd the following using the referenced code:
 
-- Total number of unique schools: 15
+- <b>Total number of unique schools:</b> 15
   ```python
   # Calculate the total number of unique schools
   school_count = school_data_complete["school_name"].nunique()
   school_count
   ```
 
-- Total students: 39,170
+- <b>Total students: 39,170
     ```python
     # Calculate the total number of students
     student_count = school_data_complete["student_name"].count()
     student_count
     ```
 
-- Total budget: 24,649,428
-```python
-# Calculate the total budget for the district
-total_budget = school_data["budget"].sum()
-total_budget
-```
+- <b>Total budget: 24,649,428
+    ```python
+    # Calculate the total budget for the district
+    total_budget = school_data["budget"].sum()
+    total_budget
+    ```
 
-- Average math score: 78.99
-```python
-# Calculate the average (mean) math score
-average_math_score = student_data["math_score"].mean()
-average_math_score
-```
+- <b>Average math score: 78.99
+    ```python
+    # Calculate the average (mean) math score
+    average_math_score = student_data["math_score"].mean()
+    average_math_score
+    ```
 
-- Average reading score: 81.88
-```python
-# Calculate the average (mean) reading score
-average_reading_score = student_data["reading_score"].mean()
-average_reading_score
-```
+- <b>Average reading score: 81.88
+    ```python
+    # Calculate the average (mean) reading score
+    average_reading_score = student_data["reading_score"].mean()
+    average_reading_score
+    ```
   
-- % passing math (the percentage of students who passed math): 74.98
-```python
-# Calculate the percentage of students who passed math (math scores greather than or equal to 70)
-passing_math_count = school_data_complete[(school_data_complete["math_score"] >= 70)].count()["student_name"]
-passing_math_percentage = passing_math_count / float(student_count) * 100
-passing_math_percentage
-```
+- <b>% passing math (the percentage of students who passed math): 74.98
+    ```python
+    # Calculate the percentage of students who passed math (math scores greather than or equal to 70)
+    passing_math_count = school_data_complete[(school_data_complete["math_score"] >= 70)].count()["student_name"]
+    passing_math_percentage = passing_math_count / float(student_count) * 100
+    passing_math_percentage
+    ```
 
-- % passing reading (the percentage of students who passed reading): 85.81
-```python
-# Calculate the percentage of students who passed reading (reading scores greather than or equal to 70)
-passing_reading_count = school_data_complete[(school_data_complete["reading_score"] >= 70)].count()["student_name"]
-passing_reading_percentage = passing_reading_count / float(student_count) * 100
-passing_reading_percentage
-```  
+- <b>% passing reading (the percentage of students who passed reading): 85.81
+    ```python
+    # Calculate the percentage of students who passed reading (reading scores greather than or equal to 70)
+    passing_reading_count = school_data_complete[(school_data_complete["reading_score"] >= 70)].count()["student_name"]
+    passing_reading_percentage = passing_reading_count / float(student_count) * 100
+    passing_reading_percentage
+    ```  
 
-- % overall passing (the percentage of students who passed math AND reading): 65.17
-```python
-# Calculate the percentage of students that passed math and reading
-passing_math_reading_count = (
-    school_data_complete[
-        ((school_data_complete["math_score"] >= 70) 
-        & (school_data_complete["reading_score"] >= 70))]
-        .count()["student_name"])
-overall_passing_rate = passing_math_reading_count /  float(student_count) * 100
-overall_passing_rate
-```
+- <b>% overall passing (the percentage of students who passed math AND reading): 65.17
+    ```python
+    # Calculate the percentage of students that passed math and reading
+    passing_math_reading_count = (
+        school_data_complete[
+            ((school_data_complete["math_score"] >= 70) 
+            & (school_data_complete["reading_score"] >= 70))]
+            .count()["student_name"])
+    overall_passing_rate = passing_math_reading_count /  float(student_count) * 100
+    overall_passing_rate
+    ```
 
 ### School Summary
 
 Perform the necessary calculations and then create a DataFrame that summarizes key metrics about each school. Include the following:
 
-- School name
-- School type
-- Total students
-- Total school budget
-- Per student budget
-- Average math score
-- Average reading score
-- % passing math (the percentage of students who passed math)
-- % passing reading (the percentage of students who passed reading)
-- % overall passing (the percentage of students who passed math AND reading)
+- <b>School name</b>
+- <b>School type</b>
+- <b>Total students</b>
+- <b>Total school budget</b>
+- <b>Per student budget</b>
+- <b>Average math score</b>
+- <b>Average reading score</b>
+- <b>% passing math (the percentage of students who passed math)</b>
+- <b>% passing reading (the percentage of students who passed reading)</b>
+- <b>% overall passing (the percentage of students who passed math AND reading)</b>
 
 ### Highest-Performing Schools (by % Overall Passing)
 
