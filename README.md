@@ -6,7 +6,14 @@ In this challenge, I created and manipulates Pandas DataFrames to analyze school
 - [Background](#background)
 - [Instructions](#instructions)
     - [District Summary](#district-summary)
-  
+    - [School Summary](#school-summary)
+    - [Highest-Performing Schools (by % Overall Passing)](#highest-performing-schools-by-%-overall-passing)
+    - [Lowest-Performing Schools (by % Overall Passing)](#lowest-performing-schools-by-%-overall-passing)
+    - [Math Scores by Grade](#math-scores-by-grade)
+    - [Reading Scores by Grade](#reading-scores-by-grade)
+    - [Scores by School Spending](#scores-by-school-spending)
+    - [Scores by School Size](#scores-by-school-size)
+    - [Scores by School Type](#scores-by-school-type)
 
 ## Background
 
@@ -28,28 +35,28 @@ Here I performed the necessary calculations and then created a high-level snapsh
   <img src="https://github.com/tmbiro/pandas_challenge/assets/26468137/5609e7eb-36d5-4704-8002-5b132d40a861" />
 </p>
 
-- Total students
-- Total budget
-- Average math score
-- Average reading score
-- % passing math (the percentage of students who passed math)
-- % passing reading (the percentage of students who passed reading)
-- % overall passing (the percentage of students who passed math AND reading)
+- <b>Total students</b>
+- <b>Total budget</b>
+- <b>Average math score</b>
+- <b>Average reading score</b>
+- <b>% passing math (the percentage of students who passed math)</b>
+- <b>% passing reading (the percentage of students who passed reading)</b>
+- <b>% overall passing (the percentage of students who passed math AND reading)</b>
 
 ### School Summary
 
 Perform the necessary calculations and then create a DataFrame that summarizes key metrics about each school. Include the following:
 
-- School name
-- School type
-- Total students
-- Total school budget
-- Per student budget
-- Average math score
-- Average reading score
-- % passing math (the percentage of students who passed math)
-- % passing reading (the percentage of students who passed reading)
-- % overall passing (the percentage of students who passed math AND reading)
+- <b>School name</b>
+- <b>School type</b>
+- <b>Total students</b>
+- <b>Total school budget</b>
+- <b>Per student budget</b>
+- <b>Average math score</b>
+- <b>Average reading score</b>
+- <b>% passing math (the percentage of students who passed math)</b>
+- <b>% passing reading (the percentage of students who passed reading)</b>
+- <b>% overall passing (the percentage of students who passed math AND reading)</b>
 
 ### Highest-Performing Schools (by % Overall Passing)
 
@@ -111,32 +118,4 @@ Use `pd.cut` on the "Total Students" column of the `per_school_summary` DataFram
 
 Use the `per_school_summary` DataFrame from the previous step to create a new DataFrame called `type_summary`. This new DataFrame should show school performance based on the "School Type".
 
-**Requirements**
-- District Summary (20 points)
-    - Calculate the total number of unique schools (2 points)
-    - Calculate the total number of students (2 points)
-    - Calculate the total budget (2 points)
-    - Calculate the average (mean) math score (2 points)
-    - Calculate the average (mean) reading score (2 points)
-    - Use the code provided to calculate the percentage of students who passed math (2 points)
-    - Calculate the percentage of students who passed reading (2 points)
-    - Use the code provided to calculate the percentage of students that passed both math and reading (2 points)
-    - Create a new DataFrame for the above calculations called `district_summary` (4 points)
-- School Summary (20 points)
-    - Use the code provided to select the school type (2 points)
-    - Calculate the total student count (2 points)
-    - Use the code provided to calculate the per capita spending (2 points)
-    - Calculate the average test scores (2 points)
-    - Calculate the number of schools with math scores of 70 or higher (2 points)
-    - Calculate the number of schools with reading scores of 70 or higher (2 points)
-    - Use the provided code to calculate the schools that passed both math and reading with scores of 70 or higher (2 points)
-    - Use the provided code to calculate the passing rates (2 points)
-    - Create a new DataFrame for the above calculations called `per_school_summary` (4 points)
-- Highest-Performing Schools by Percentage of Overall Passing (5 points)
-    - Sort the schools by % Overall Passing in descending order (2 points)
-    - Save the results to a DataFrame called `top_schools` (2 points)
-    - Display the first 5 rows (1 point)
-- Lowest-Performing Schools by Percentage of Overall Passing (5 points)
-    - Sort the schools by % Overall Passing in ascending order (2 points)
-    - Save the results to a DataFrame called `bottom_schools`
 
