@@ -41,22 +41,23 @@ school_data_complete = pd.merge(
 school_data_complete.head()
 ```
 
-Inspecting the new dataframe gave me the following table:
-![image](https://github.com/tmbiro/pandas_challenge/assets/26468137/6e6883bb-516f-40a5-9840-9db7d0533850)
+Here's a look at the dataframe:
 
-<p align="justify">
-  <img src="https://github.com/tmbiro/pandas_challenge/assets/26468137/5609e7eb-36d5-4704-8002-5b132d40a861" />
-</p>
+![image](https://github.com/tmbiro/pandas_challenge/assets/26468137/6e6883bb-516f-40a5-9840-9db7d0533850)
 
 
 Using Pandas and Jupyter Notebook, I needed to create a report that includes the data. My report needed to include a written description of at least two observable trends based on the data.
 
 ### District Summary
 
-Here I performed the necessary calculations and then created a high-level snapshot of the district's key metrics in a DataFrame. I discoverd the following using the referenced code:
+First, I performed some necessary calculations and then created a high-level snapshot of the district's key metrics in tue DataFrame. I discoverd the following using the referenced code:
 
 - Total number of unique schools = 15
-
+  ```python
+  # Calculate the total number of unique schools
+  school_count = school_data_complete["school_name"].nunique()
+  school_count
+  ```
 
 - Total students
 
