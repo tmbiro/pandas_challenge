@@ -1,32 +1,33 @@
 # Pandas Challenge
 
-**Data Analysis Bootcamp Homework**
+In this challenge, I created and manipulates Pandas DataFrames to analyze school and standardized test data.
 
-In this assignment, you’ll create and manipulate Pandas DataFrames to analyze school and standardized test data.
+## Contents
+- [Background](#background)
+- [Instructions](#instructions)
+    - [District Summary](#district-summary)
+  
 
 ## Background
 
-You are the new Chief Data Scientist for your city's school district. In this capacity, you'll be helping the school board and mayor make strategic decisions regarding future school budgets and priorities.
+As an exercise, I imagined I was the Chief Data Scientist for my city's school district. In this capacity, I would be helping the school board and mayor make strategic decisions regarding future school budgets and priorities.
 
-As a first task, you've been asked to analyze the district-wide standardized test results. You'll be given access to every student's math and reading scores, as well as various information on the schools they attend. Your task is to aggregate the data to showcase obvious trends in school performance.
-
-## Before You Begin
-
-1. Create a new repository for this project called pandas-challenge. Do not add this homework to an existing repository.
-2. Clone the new repository to your computer.
-3. Inside your local Git repository, create a folder for this homework assignment and name it PyCitySchools.
-4. Add your Jupyter notebook to this folder. This will be the main script to run for analysis.
-5. Push these changes to GitHub or GitLab.
+As a first task, I had been asked to analyze the district-wide standardized test results. I was given access to every student's math and reading scores, as well as various information on the schools they attend. My task was to aggregate the data to showcase obvious trends in school performance.
 
 ## Instructions
 
-Using Pandas and Jupyter Notebook, create a report that includes the data. Your report must include a written description of at least two observable trends based on the data.
+Using Pandas and Jupyter Notebook, I needed to create a report that includes the data. My report needed to include a written description of at least two observable trends based on the data.
 
 ### District Summary
 
-Perform the necessary calculations and then create a high-level snapshot of the district's key metrics in a DataFrame. Include the following:
+Here I performed the necessary calculations and then created a high-level snapshot of the district's key metrics in a DataFrame. I included the following:
 
 - Total number of unique schools
+
+<p align="right">
+  <img src="https://github.com/tmbiro/pandas_challenge/assets/26468137/5609e7eb-36d5-4704-8002-5b132d40a861" />
+</p>
+
 - Total students
 - Total budget
 - Average math score
