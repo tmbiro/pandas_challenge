@@ -411,4 +411,4 @@ type_summary
 ```
 ![image](https://github.com/tmbiro/pandas_challenge/assets/26468137/a4e5971f-e00d-4334-9a80-784fc856e746)
 
-We can see that is the the case: charter schools far out-performed district schools.
+We can see that is the case: charter schools far out-performed district schools.
