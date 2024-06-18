@@ -24,7 +24,7 @@ Here I performed the necessary calculations and then created a high-level snapsh
 
 - Total number of unique schools
 
-<p align="right">
+<p align="justify">
   <img src="https://github.com/tmbiro/pandas_challenge/assets/26468137/5609e7eb-36d5-4704-8002-5b132d40a861" />
 </p>
 
