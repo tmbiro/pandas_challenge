@@ -56,35 +56,30 @@ First, I performed some necessary calculations and then created a high-level sna
   ```python
   # Calculate the total number of unique schools
   school_count = school_data_complete["school_name"].nunique()
-  school_count
   ```
 
 - <b>Total students:</b> 39,170
     ```python
     # Calculate the total number of students
     student_count = school_data_complete["student_name"].count()
-    student_count
     ```
 
 - <b>Total budget:</b> $24,649,428
     ```python
     # Calculate the total budget for the district
     total_budget = school_data["budget"].sum()
-    total_budget
     ```
 
 - <b>Average math score:</b> 78.99
     ```python
     # Calculate the average (mean) math score
     average_math_score = student_data["math_score"].mean()
-    average_math_score
     ```
 
 - <b>Average reading score:</b> 81.88
     ```python
     # Calculate the average (mean) reading score
     average_reading_score = student_data["reading_score"].mean()
-    average_reading_score
     ```
   
 - <b>% passing math (the percentage of students who passed math):</b> 74.98
@@ -92,7 +87,6 @@ First, I performed some necessary calculations and then created a high-level sna
     # Calculate the percentage of students who passed math (math scores greather than or equal to 70)
     passing_math_count = school_data_complete[(school_data_complete["math_score"] >= 70)].count()["student_name"]
     passing_math_percentage = passing_math_count / float(student_count) * 100
-    passing_math_percentage
     ```
 
 - <b>% passing reading (the percentage of students who passed reading):</b> 85.81
@@ -100,7 +94,6 @@ First, I performed some necessary calculations and then created a high-level sna
     # Calculate the percentage of students who passed reading (reading scores greather than or equal to 70)
     passing_reading_count = school_data_complete[(school_data_complete["reading_score"] >= 70)].count()["student_name"]
     passing_reading_percentage = passing_reading_count / float(student_count) * 100
-    passing_reading_percentage
     ```  
 
 - <b>% overall passing (the percentage of students who passed math AND reading):</b> 65.17
@@ -112,14 +105,42 @@ First, I performed some necessary calculations and then created a high-level sna
             & (school_data_complete["reading_score"] >= 70))]
             .count()["student_name"])
     overall_passing_rate = passing_math_reading_count /  float(student_count) * 100
-    overall_passing_rate
     ```
+Here's a high-level snapshot of the district's key metrics in a DataFrame
+
+![image](https://github.com/tmbiro/pandas_challenge/assets/26468137/84518044-2b99-4f7d-8521-20a2c5625b4a)
+
+I used this code to get it:
+```python
+# Create a high-level snapshot of the district's key metrics in a DataFrame
+district_summary = pd.DataFrame({
+    "Total Schools": school_count,
+    "Total Students": student_count,
+    "Total Budget": total_budget,
+    "Average Math Score": average_math_score,
+    "Average Reading Score": average_reading_score,
+    "% Passing Math": passing_math_percentage,
+    "% Passing Reading": passing_reading_percentage,
+    "% Overall Passing Rate": [overall_passing_rate]
+})
+
+# Formatting
+district_summary["Total Students"] = district_summary["Total Students"].map("{:,}".format)
+district_summary["Total Budget"] = district_summary["Total Budget"].map("${:,.2f}".format)
+
+# Display the DataFrame
+district_summary
+```
 
 ### School Summary
 
-Perform the necessary calculations and then create a DataFrame that summarizes key metrics about each school. Include the following:
+Here, I created a DataFrame that summarizes key metrics about each school. I included the following:
 
 - <b>School name</b>
+    ```python
+    # Set school name as index and select the school types
+    school_types = school_data.set_index("school_name")["type"]
+    ```
 - <b>School type</b>
 - <b>Total students</b>
 - <b>Total school budget</b>
