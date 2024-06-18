@@ -29,25 +29,25 @@ Using Pandas and Jupyter Notebook, I needed to create a report that includes the
 
 Here I performed the necessary calculations and then created a high-level snapshot of the district's key metrics in a DataFrame. I included the following:
 
-- <b>Total number of unique schools</b>
+- Total number of unique schools
 
 <p align="justify">
   <img src="https://github.com/tmbiro/pandas_challenge/assets/26468137/5609e7eb-36d5-4704-8002-5b132d40a861" />
 </p>
 
-- <b>Total students</b>
+- Total students
 
 <p align="justify">
   <img src="https://github.com/tmbiro/pandas_challenge/assets/26468137/1217a7d1-4a59-46b3-b494-c5bf2917c8cb" />
 </p>
 
-- <b>Total budget</b>
+- Total budget
 
 <p align="justify">
   <img src="https://github.com/tmbiro/pandas_challenge/assets/26468137/7ab6c6c5-bbac-4bb9-99b5-0d0770dce4a8" />
 </p>
 
-- <b>Average math score</b>
+- Average math score
 ```python
 # Calculate the average (mean) math score
 average_math_score = student_data["math_score"].mean()
@@ -55,25 +55,25 @@ average_math_score
 ```
 78.99
 
-- <b>Average reading score</b>
-- <b>% passing math (the percentage of students who passed math)</b>
-- <b>% passing reading (the percentage of students who passed reading)</b>
-- <b>% overall passing (the percentage of students who passed math AND reading)</b>
+- Average reading score
+- % passing math (the percentage of students who passed math)
+- % passing reading (the percentage of students who passed reading)
+- % overall passing (the percentage of students who passed math AND reading)
 
 ### School Summary
 
 Perform the necessary calculations and then create a DataFrame that summarizes key metrics about each school. Include the following:
 
-- <b>School name</b>
-- <b>School type</b>
-- <b>Total students</b>
-- <b>Total school budget</b>
-- <b>Per student budget</b>
-- <b>Average math score</b>
-- <b>Average reading score</b>
-- <b>% passing math (the percentage of students who passed math)</b>
-- <b>% passing reading (the percentage of students who passed reading)</b>
-- <b>% overall passing (the percentage of students who passed math AND reading)</b>
+- School name
+- School type
+- Total students
+- Total school budget
+- Per student budget
+- Average math score
+- Average reading score
+- % passing math (the percentage of students who passed math)
+- % passing reading (the percentage of students who passed reading)
+- % overall passing (the percentage of students who passed math AND reading)
 
 ### Highest-Performing Schools (by % Overall Passing)
 
