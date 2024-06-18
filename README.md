@@ -22,7 +22,7 @@ Using Pandas and Jupyter Notebook, I needed to create a report that includes the
 
 Here I performed the necessary calculations and then created a high-level snapshot of the district's key metrics in a DataFrame. I included the following:
 
-- Total number of unique schools
+- <b>Total number of unique schools</b>
 
 <p align="justify">
   <img src="https://github.com/tmbiro/pandas_challenge/assets/26468137/5609e7eb-36d5-4704-8002-5b132d40a861" />
