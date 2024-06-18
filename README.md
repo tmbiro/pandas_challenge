@@ -59,35 +59,35 @@ First, I performed some necessary calculations and then created a high-level sna
   school_count
   ```
 
-- <b>Total students: 39,170
+- <b>Total students:</b> 39,170
     ```python
     # Calculate the total number of students
     student_count = school_data_complete["student_name"].count()
     student_count
     ```
 
-- <b>Total budget: 24,649,428
+- <b>Total budget:</b> 24,649,428
     ```python
     # Calculate the total budget for the district
     total_budget = school_data["budget"].sum()
     total_budget
     ```
 
-- <b>Average math score: 78.99
+- <b>Average math score:</b> 78.99
     ```python
     # Calculate the average (mean) math score
     average_math_score = student_data["math_score"].mean()
     average_math_score
     ```
 
-- <b>Average reading score: 81.88
+- <b>Average reading score:</b> 81.88
     ```python
     # Calculate the average (mean) reading score
     average_reading_score = student_data["reading_score"].mean()
     average_reading_score
     ```
   
-- <b>% passing math (the percentage of students who passed math): 74.98
+- <b>% passing math (the percentage of students who passed math):</b> 74.98
     ```python
     # Calculate the percentage of students who passed math (math scores greather than or equal to 70)
     passing_math_count = school_data_complete[(school_data_complete["math_score"] >= 70)].count()["student_name"]
@@ -95,7 +95,7 @@ First, I performed some necessary calculations and then created a high-level sna
     passing_math_percentage
     ```
 
-- <b>% passing reading (the percentage of students who passed reading): 85.81
+- <b>% passing reading (the percentage of students who passed reading):</b> 85.81
     ```python
     # Calculate the percentage of students who passed reading (reading scores greather than or equal to 70)
     passing_reading_count = school_data_complete[(school_data_complete["reading_score"] >= 70)].count()["student_name"]
@@ -103,7 +103,7 @@ First, I performed some necessary calculations and then created a high-level sna
     passing_reading_percentage
     ```  
 
-- <b>% overall passing (the percentage of students who passed math AND reading): 65.17
+- <b>% overall passing (the percentage of students who passed math AND reading):</b> 65.17
     ```python
     # Calculate the percentage of students that passed math and reading
     passing_math_reading_count = (
