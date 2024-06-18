@@ -50,7 +50,7 @@ Using Pandas and Jupyter Notebook, I needed to create a report that includes the
 
 ### District Summary
 
-First, I performed some necessary calculations and then created a high-level snapshot of the district's key metrics in tue DataFrame. I discoverd the following using the referenced code:
+First, I performed some necessary calculations and then created a high-level snapshot of the district's key metrics in the DataFrame. I discoverd the following using the referenced code:
 
 - <b>Total number of unique schools:</b> 15
   ```python
