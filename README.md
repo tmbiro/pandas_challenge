@@ -48,6 +48,13 @@ Here I performed the necessary calculations and then created a high-level snapsh
 </p>
 
 - <b>Average math score</b>
+```python
+# Calculate the average (mean) math score
+average_math_score = student_data["math_score"].mean()
+average_math_score
+```
+78.99
+
 - <b>Average reading score</b>
 - <b>% passing math (the percentage of students who passed math)</b>
 - <b>% passing reading (the percentage of students who passed reading)</b>
