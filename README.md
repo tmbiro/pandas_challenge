@@ -19,21 +19,44 @@ In this challenge, I created and manipulates Pandas DataFrames to analyze school
 
 As an exercise, I imagined I was the Chief Data Scientist for my city's school district. In this capacity, I would be helping the school board and mayor make strategic decisions regarding future school budgets and priorities.
 
-As a first task, I had been asked to analyze the district-wide standardized test results. I was given access to every student's math and reading scores, as well as various information on the schools they attend. My task was to aggregate the data to showcase obvious trends in school performance.
+As a first task, I had been asked to analyze the district-wide standardized test results. I was given access to every student's math and reading scores, as well as various information on the schools they attend. My task was to aggregate the data to showcase obvious trends in school performance. Here is how I aggragated the data:
 
-## Instructions
+```python
+# Modules
+from pathlib import Path
+from textwrap import dedent
+import pandas as pd
+
+# Load and read School and Student Data File and store into Pandas DataFrames
+school_data = pd.read_csv("Resources/schools_complete.csv")
+student_data = pd.read_csv("Resources/students_complete.csv")
+
+# Combine the data into a single dataset.  
+school_data_complete = pd.merge(
+    student_data, 
+    school_data, 
+    how="left", 
+    on=["school_name", "school_name"])
+
+school_data_complete.head()
+```
+
+Inspecting the new dataframe gave me the following table:
+![image](https://github.com/tmbiro/pandas_challenge/assets/26468137/6e6883bb-516f-40a5-9840-9db7d0533850)
+
+<p align="justify">
+  <img src="https://github.com/tmbiro/pandas_challenge/assets/26468137/5609e7eb-36d5-4704-8002-5b132d40a861" />
+</p>
+
 
 Using Pandas and Jupyter Notebook, I needed to create a report that includes the data. My report needed to include a written description of at least two observable trends based on the data.
 
 ### District Summary
 
-Here I performed the necessary calculations and then created a high-level snapshot of the district's key metrics in a DataFrame. I included the following:
+Here I performed the necessary calculations and then created a high-level snapshot of the district's key metrics in a DataFrame. I discoverd the following using the referenced code:
 
-- Total number of unique schools
+- Total number of unique schools = 15
 
-<p align="justify">
-  <img src="https://github.com/tmbiro/pandas_challenge/assets/26468137/5609e7eb-36d5-4704-8002-5b132d40a861" />
-</p>
 
 - Total students
 
