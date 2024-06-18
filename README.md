@@ -234,6 +234,8 @@ top_schools = per_school_summary.head(5)
 ```
 ![image](https://github.com/tmbiro/pandas_challenge/assets/26468137/fd42ae5e-c1b7-480a-8d83-5df69fda79cc)
 
+We can see that students in charter schools performed the best.
+
 
 ### Lowest-Performing Schools (by % Overall Passing)
 
@@ -245,43 +247,106 @@ bottom_schools = per_school_summary.head(5)
 ```
 ![image](https://github.com/tmbiro/pandas_challenge/assets/26468137/c1a89ec7-f66a-44c0-9e12-fff6f8099954)
 
+We can see that students in district schools performed worst of all (they also seem to have a higher budget than the charter schools shown above).
 
 ### Math Scores by Grade
 
-Perform the necessary calculations to create a DataFrame that lists the average math score for students of each grade level (9th, 10th, 11th, 12th) at each school.
+Then, I performed the necessary calculations to create a DataFrame that lists the average math score for students of each grade level (9th, 10th, 11th, 12th) at each school.
+```python
+# Separate the data by grade
+ninth_graders = school_data_complete[(school_data_complete["grade"] == "9th")]
+tenth_graders = school_data_complete[(school_data_complete["grade"] == "10th")]
+eleventh_graders = school_data_complete[(school_data_complete["grade"] == "11th")]
+twelfth_graders = school_data_complete[(school_data_complete["grade"] == "12th")]
+
+# Group by "school_name" and take the mean of each.
+ninth_graders_math_scores = ninth_graders.groupby("school_name")["math_score"].mean()
+tenth_graders_math_scores = tenth_graders.groupby("school_name")["math_score"].mean()
+eleventh_graders_math_scores = eleventh_graders.groupby("school_name")["math_score"].mean()
+twelfth_graders_math_scores = twelfth_graders.groupby("school_name")["math_score"].mean()
+
+# Combine each of the scores above into single DataFrame called `math_scores_by_grade`
+math_scores_by_grade = pd.DataFrame({
+    "9th": ninth_graders_math_scores,
+    "10th": tenth_graders_math_scores,
+    "11th": eleventh_graders_math_scores,
+    "12th": twelfth_graders_math_scores
+})
+
+# Minor data wrangling
+math_scores_by_grade.index.name = None
+
+# Display the DataFrame
+math_scores_by_grade
+```
+![image](https://github.com/tmbiro/pandas_challenge/assets/26468137/695f3d6b-06b9-4969-8b33-76e45e34dec7)
+
 
 ### Reading Scores by Grade
 
-Create a DataFrame that lists the average reading score for students of each grade level (9th, 10th, 11th, 12th) at each school.
+I also created a DataFrame that lists the average reading score for students of each grade level (9th, 10th, 11th, 12th) at each school.
+```python
+# Group by "school_name" and take the mean of each.
+ninth_graders_reading_scores = ninth_graders.groupby("school_name")["reading_score"].mean()
+tenth_graders_reading_scores = tenth_graders.groupby("school_name")["reading_score"].mean()
+eleventh_graders_reading_scores = eleventh_graders.groupby("school_name")["reading_score"].mean()
+twelfth_graders_reading_scores = twelfth_graders.groupby("school_name")["reading_score"].mean()
+
+# Combine each of the scores above into single DataFrame called `reading_scores_by_grade`
+reading_scores_by_grade = pd.DataFrame({
+    "9th": ninth_graders_reading_scores,
+    "10th": tenth_graders_reading_scores,
+    "11th": eleventh_graders_reading_scores,
+    "12th": twelfth_graders_reading_scores
+})
+
+# Minor data wrangling
+reading_scores_by_grade.index.name = None
+
+# Display the DataFrame
+reading_scores_by_grade
+```
+![image](https://github.com/tmbiro/pandas_challenge/assets/26468137/bf23c38a-a949-44fc-a55e-3f5eba712b2c)
+
+Grade-level differences seem minimal. Let's look at some more variables that might be influencing test scores.
 
 ### Scores by School Spending
 
-Create a table that breaks down school performance based on average spending ranges (per student). Use the code provided below to create four bins with reasonable cutoff values to group school spending.
-
+I then created a table that breaks down school performance based on average spending ranges (per student).
 ```python
+# Establish the bins 
 spending_bins = [0, 585, 630, 645, 680]
-labels = ["<$585", "$585-630", "$630-645", "$645-680"]
+spending_labels = ["<$585", "$585-630", "$630-645", "$645-680"]
+
+# Create a copy of the school summary since it has the "Per Student Budget"
+school_spending_df = per_school_summary.copy()
+school_spending_df["Per Student Budget"] = school_spending_df["Per Student Budget"].str.replace('$', '', regex=True).astype(float)
+
+# Use `pd.cut` to categorize spending based on the bins.
+school_spending_df["Spending Ranges (Per Student)"] = pd.cut(school_spending_df["Per Student Budget"], spending_bins, labels=spending_labels, include_lowest=True)
+school_spending_df.head()
+
+#  Calculate averages for the desired columns. 
+spending_math_scores = school_spending_df.groupby(["Spending Ranges (Per Student)"]).mean(numeric_only=True)["Average Math Score"]
+spending_reading_scores = school_spending_df.groupby(["Spending Ranges (Per Student)"]).mean(numeric_only=True)["Average Reading Score"]
+spending_passing_math = school_spending_df.groupby(["Spending Ranges (Per Student)"]).mean(numeric_only=True)["% Passing Math"]
+spending_passing_reading = school_spending_df.groupby(["Spending Ranges (Per Student)"]).mean(numeric_only=True)["% Passing Reading"]
+overall_passing_spending = school_spending_df.groupby(["Spending Ranges (Per Student)"]).mean(numeric_only=True)["% Overall Passing"]
+
+# Assemble into DataFrame
+spending_summary = pd.DataFrame({
+    "Average Math Score": spending_math_scores,
+    "Average Reading Score": spending_reading_scores,
+    '% Passing Math': spending_passing_math,
+    '% Passing Reading': spending_passing_reading,
+    "% Overall Passing": overall_passing_spending
+    })
+
+# Display results
+spending_summary
 ```
+![image](https://github.com/tmbiro/pandas_challenge/assets/26468137/d8be3687-6b0e-4e3d-96eb-61ef76524b88)
 
-Use pd.cut to categorize spending based on the bins.
-
-Use the following code to then calculate mean scores per spending range.
-
-```python
-spending_math_scores = school_spending_df.groupby(["Spending Ranges (Per Student)"]).mean()["Average Math Score"]
-spending_reading_scores = school_spending_df.groupby(["Spending Ranges (Per Student)"]).mean()["Average Reading Score"]
-spending_passing_math = school_spending_df.groupby(["Spending Ranges (Per Student)"]).mean()["% Passing Math"]
-spending_passing_reading = school_spending_df.groupby(["Spending Ranges (Per Student)"]).mean()["% Passing Reading"]
-overall_passing_spending = school_spending_df.groupby(["Spending Ranges (Per Student)"]).mean()["% Overall Passing"]
-```
-
-Use the scores above to create a DataFrame called `spending_summary`. Include the following metrics in the table:
-
-- Average math score
-- Average reading score
-- % passing math (the percentage of students who passed math)
-- % passing reading (the percentage of students who passed reading)
-- % overall passing (the percentage of students who passed math AND reading)
 
 **Scores by School Size**
 
