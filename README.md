@@ -134,30 +134,117 @@ district_summary
 
 ### School Summary
 
-Here, I created a DataFrame that summarizes key metrics about each school. I included the following:
+Here, I created a DataFrame that summarizes key metrics about each school. I included the following (with code examples):
 
-- <b>School name</b>
+- <b>School name and School type</b>
     ```python
     # Set school name as index and select the school types
     school_types = school_data.set_index("school_name")["type"]
     ```
-- <b>School type</b>
+
 - <b>Total students</b>
+    ```python
+    # Calculate the total student count
+    per_school_counts = school_data_complete.groupby(['school_name'])['Student ID'].count()
+    ```
+    
 - <b>Total school budget</b>
+    ```python
+    # Calculate the total school budget
+    per_school_budget = school_data_complete.groupby(["school_name"])["budget"].mean()
+    ```
+    
 - <b>Per student budget</b>
+    ```python
+    # Calculate the per capita spending
+    per_school_capita = per_school_budget / per_school_counts
+    ```
+    
 - <b>Average math score</b>
+    ```python
+    # Calculate the average math scores for each school
+    per_school_math = school_data_complete.groupby(["school_name"])["math_score"].mean()
+    ```
+    
 - <b>Average reading score</b>
+    ```python
+    # Calculate the average reading scores for each school
+    per_school_reading = school_data_complete.groupby(["school_name"])["reading_score"].mean()
+    ```
+    
 - <b>% passing math (the percentage of students who passed math)</b>
+    ```python
+    # Calculate the percentage of students with math scores of 70 or higher in each school
+    school_passing_math = school_data_complete[(school_data_complete["math_score"] >= 70)].groupby("school_name").count()["student_name"]
+    school_passing_math_percentage = (school_passing_math / per_school_counts)*100
+    ```
+    
 - <b>% passing reading (the percentage of students who passed reading)</b>
+    ```python
+    # Calculate the percentage of students with reading scores of 70 or higher in each school
+    school_passing_reading = school_data_complete[(school_data_complete["reading_score"] >= 70)].groupby("school_name").count()["student_name"]
+    school_passing_reading_percentage = (school_passing_reading / per_school_counts)*100
+    ```
+    
 - <b>% overall passing (the percentage of students who passed math AND reading)</b>
+    ```python
+    # Calculate percentage of students that passed both math and reading with scores of 70 or higher for each school
+    school_overall_passing_count = (
+        school_data_complete[
+            ((school_data_complete["math_score"] >= 70) 
+            & (school_data_complete["reading_score"] >= 70))]
+            .groupby("school_name")
+            .count()["student_name"])
+    school_overall_passing_rate = (school_overall_passing_count /  per_school_counts) * 100
+    ```
+Here's how I created the dataframe:
+```python
+# Create a DataFrame called `per_school_summary` with columns for the calculations above.
+per_school_summary = pd.DataFrame({
+    "School Type": school_types,
+    "Total Students": per_school_counts,
+    "Total School Budget": per_school_budget,
+    "Per Student Budget": per_school_capita,
+    "Average Math Score": per_school_math,
+    "Average Reading Score": per_school_reading,
+    '% Passing Math': school_passing_math_percentage,
+    '% Passing Reading': school_passing_reading_percentage,
+    "% Overall Passing": school_overall_passing_rate
+})
+
+# Formatting
+per_school_summary["Total School Budget"] = per_school_summary["Total School Budget"].map("${:,.2f}".format)
+per_school_summary["Per Student Budget"] = per_school_summary["Per Student Budget"].map("${:,.2f}".format)
+
+# Display the DataFrame
+per_school_summary
+```
+
+Here's what the dataframe looked like:
+![image](https://github.com/tmbiro/pandas_challenge/assets/26468137/7580f1bc-bce2-415b-93ca-ddc4ae5afdb1)
+
 
 ### Highest-Performing Schools (by % Overall Passing)
 
-Sort the schools by % Overall Passing in descending order and display the top 5 rows. Save the results in a DataFrame called "top_schools".
+Next, I sorted the schools by % Overall Passing in descending order and displayed the top 5 rows. I also saved the results in a DataFrame called "top_schools".
+```python
+# Sort the schools by `% Overall Passing` in descending order and display the top 5 rows.
+per_school_summary = per_school_summary.sort_values("% Overall Passing", ascending=False)
+top_schools = per_school_summary.head(5)
+```
+![image](https://github.com/tmbiro/pandas_challenge/assets/26468137/fd42ae5e-c1b7-480a-8d83-5df69fda79cc)
+
 
 ### Lowest-Performing Schools (by % Overall Passing)
 
-Sort the schools by % Overall Passing in ascending order and display the top 5 rows. Save the results in a DataFrame called "bottom_schools".
+I also sorted the schools by % Overall Passing in ascending order and displayed the top 5 rows. I then saved the results in a DataFrame called "bottom_schools".
+```python
+# Sort the schools by `% Overall Passing` in ascending order and display the top 5 rows.
+per_school_summary = per_school_summary.sort_values("% Overall Passing")
+bottom_schools = per_school_summary.head(5)
+```
+![image](https://github.com/tmbiro/pandas_challenge/assets/26468137/c1a89ec7-f66a-44c0-9e12-fff6f8099954)
+
 
 ### Math Scores by Grade
 
