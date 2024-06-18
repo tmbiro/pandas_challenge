@@ -197,7 +197,7 @@ Here, I created a DataFrame that summarizes key metrics about each school. I inc
             .count()["student_name"])
     school_overall_passing_rate = (school_overall_passing_count /  per_school_counts) * 100
     ```
-Here's how I created the dataframe:
+Then, I created the dataframe:
 ```python
 # Create a DataFrame called `per_school_summary` with columns for the calculations above.
 per_school_summary = pd.DataFrame({
@@ -219,8 +219,6 @@ per_school_summary["Per Student Budget"] = per_school_summary["Per Student Budge
 # Display the DataFrame
 per_school_summary
 ```
-
-Here's what the dataframe looked like:
 ![image](https://github.com/tmbiro/pandas_challenge/assets/26468137/7580f1bc-bce2-415b-93ca-ddc4ae5afdb1)
 
 
