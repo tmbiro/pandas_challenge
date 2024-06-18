@@ -349,17 +349,66 @@ We can see that students in schools with smaller spending ranges per student per
 
 **Scores by School Size**
 
-Use the following code to bin the `per_school_summary`.
-
+Next, I created a DataFrame called `size_summary` that breaks down school performance based on school size (small, medium, or large).
 ```python
+# Establish the bins.
 size_bins = [0, 1000, 2000, 5000]
-labels = ["Small (<1000)", "Medium (1000-2000)", "Large (2000-5000)"]
-```
+size_labels = ["Small (<1000)", "Medium (1000-2000)", "Large (2000-5000)"]
 
-Use `pd.cut` on the "Total Students" column of the `per_school_summary` DataFrame. Create a DataFrame called `size_summary` that breaks down school performance based on school size (small, medium, or large).
+# Categorize the spending based on the bins
+# Use `pd.cut` on the "Total Students" column of the `per_school_summary` DataFrame.
+
+per_school_summary["School Size"] = pd.cut(per_school_summary["Total Students"], size_bins, labels=size_labels, include_lowest=True)
+
+# Calculate averages for the desired columns. 
+size_math_scores = per_school_summary.groupby(["School Size"]).mean(numeric_only=True)["Average Math Score"]
+size_reading_scores = per_school_summary.groupby(["School Size"]).mean(numeric_only=True)["Average Reading Score"]
+size_passing_math = per_school_summary.groupby(["School Size"]).mean(numeric_only=True)["% Passing Math"]
+size_passing_reading = per_school_summary.groupby(["School Size"]).mean(numeric_only=True)["% Passing Reading"]
+size_overall_passing = per_school_summary.groupby(["School Size"]).mean(numeric_only=True)["% Overall Passing"]
+
+# Create a DataFrame called `size_summary` that breaks down school performance based on school size (small, medium, or large).
+# Use the scores above to create a new DataFrame called `size_summary`
+size_summary = pd.DataFrame({
+    "Average Math Score": size_math_scores,
+    "Average Reading Score": size_reading_scores,
+    '% Passing Math': size_passing_math,
+    '% Passing Reading': size_passing_reading,
+    "% Overall Passing": size_overall_passing
+    })
+
+
+# Display results
+size_summary
+```
+![image](https://github.com/tmbiro/pandas_challenge/assets/26468137/f4b6e0bc-2176-4251-8c01-c6304ce8b940)
+
+We can see that smaller- and medium-sized schools performed better than larger-sozed schools.
 
 **Scores by School Type**
 
-Use the `per_school_summary` DataFrame from the previous step to create a new DataFrame called `type_summary`. This new DataFrame should show school performance based on the "School Type".
+Lastly, I created new DataFrame that showed school performance based on the "School Type" to confirm the observations that charter schools out-performed district schools.
+```python
 
+# Group the per_school_summary DataFrame by "School Type" and average the results.
+type_math_scores = per_school_summary.groupby(["School Type"]).mean(numeric_only=True)["Average Math Score"]
+type_reading_scores = per_school_summary.groupby(["School Type"]).mean(numeric_only=True)["Average Reading Score"]
+type_passing_math = per_school_summary.groupby(["School Type"]).mean(numeric_only=True)["% Passing Math"]
+type_passing_reading = per_school_summary.groupby(["School Type"]).mean(numeric_only=True)["% Passing Reading"]
+type_overall_passing = per_school_summary.groupby(["School Type"]).mean(numeric_only=True)["% Overall Passing"]
 
+# Assemble the new data by type into a DataFrame called `type_summary`
+type_summary = pd.DataFrame({
+    "Average Math Score": type_math_scores,
+    "Average Reading Score": type_reading_scores,
+    '% Passing Math': type_passing_math,
+    '% Passing Reading': type_passing_reading,
+    "% Overall Passing": type_overall_passing
+    })
+
+# Display results
+type_summary
+```
+![image](https://github.com/tmbiro/pandas_challenge/assets/26468137/a4e5971f-e00d-4334-9a80-784fc856e746)
+
+We can see that is the the case: charter schools far out-performed district schools.
