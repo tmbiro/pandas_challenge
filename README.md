@@ -36,7 +36,17 @@ Here I performed the necessary calculations and then created a high-level snapsh
 </p>
 
 - <b>Total students</b>
+
+<p align="justify">
+  <img src="https://github.com/tmbiro/pandas_challenge/assets/26468137/1217a7d1-4a59-46b3-b494-c5bf2917c8cb" />
+</p>
+
 - <b>Total budget</b>
+
+<p align="justify">
+  <img src="https://github.com/tmbiro/pandas_challenge/assets/26468137/7ab6c6c5-bbac-4bb9-99b5-0d0770dce4a8" />
+</p>
+
 - <b>Average math score</b>
 - <b>Average reading score</b>
 - <b>% passing math (the percentage of students who passed math)</b>
